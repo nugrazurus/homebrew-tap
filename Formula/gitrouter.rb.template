@@ -1,0 +1,44 @@
+class Gitrouter < Formula
+  desc "GitHub multi-account management CLI"
+  homepage "https://github.com/nugrazuruspratama/gitrouter"
+  version "@VERSION@"
+
+  on_macos do
+    on_intel do
+      url "https://github.com/nugrazuruspratama/gitrouter/releases/download/v#{version}/gitrouter-darwin-amd64"
+      sha256 "@DARWIN_AMD64_SHA@"
+    end
+    on_arm do
+      url "https://github.com/nugrazuruspratama/gitrouter/releases/download/v#{version}/gitrouter-darwin-arm64"
+      sha256 "@DARWIN_ARM64_SHA@"
+    end
+  end
+
+  on_linux do
+    on_intel do
+      url "https://github.com/nugrazuruspratama/gitrouter/releases/download/v#{version}/gitrouter-linux-amd64"
+      sha256 "@LINUX_AMD64_SHA@"
+    end
+    on_arm do
+      url "https://github.com/nugrazuruspratama/gitrouter/releases/download/v#{version}/gitrouter-linux-arm64"
+      sha256 "@LINUX_ARM64_SHA@"
+    end
+  end
+
+  def install
+    # Rename binary to match formula name
+    if OS.mac? && Hardware::CPU.intel?
+      bin.install "gitrouter-darwin-amd64" => "gitrouter"
+    elsif OS.mac? && Hardware::CPU.arm?
+      bin.install "gitrouter-darwin-arm64" => "gitrouter"
+    elsif OS.linux? && Hardware::CPU.intel?
+      bin.install "gitrouter-linux-amd64" => "gitrouter"
+    elsif OS.linux? && Hardware::CPU.arm?
+      bin.install "gitrouter-linux-arm64" => "gitrouter"
+    end
+  end
+
+  test do
+    assert_match "gitrouter version", shell_output("#{bin}/gitrouter --version")
+  end
+end
