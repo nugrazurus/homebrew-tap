@@ -5,16 +5,16 @@ Homebrew tap for gitrouter CLI.
 ## Installation
 
 ```bash
-brew install nugrazuruspratama/tap/gitrouter
+brew install nugrazurus/tap/gitrouter
 ```
 
 Or:
 
 ```bash
-brew tap nugrazuruspratama/tap
+brew tap nugrazurus/tap
 brew install gitrouter
 ```
 
 ## Usage
 
-See [gitrouter README](https://github.com/nugrazuruspratama/gitrouter#readme).
+See [gitrouter README](https://github.com/nugrazurus/gitrouter#readme).
